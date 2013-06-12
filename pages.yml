@@ -1,0 +1,22 @@
+
+languages:
+  ja: 日本語
+  en: English
+
+pages:
+
+  - url: index.html
+    ja: ホーム
+    en: Home
+
+  - url: features.html
+    ja: 機能
+    en: Features
+
+  - url: downloads.html
+    ja: ダウンロード
+    en: Downloads
+
+  - url: faq.html
+    ja: よくある質問
+    en: FAQ
