@@ -4,6 +4,7 @@ require 'pp'
 require 'pathname'
 
 dir = Pathname.new(__FILE__).dirname
+destination = Pathname.new("../PaintField")
 
 template = File::open(dir + "template.erb").read
 
@@ -61,7 +62,7 @@ langs.each_key do |lang|
     pp lang_links
     pp self_url
     
-    File::open(dir + "destination/#{lang}/#{self_url}", "w") do |outfile|
+    File::open(destination + "#{lang}/#{self_url}", "w") do |outfile|
       outfile.write(ERB.new(template).result(binding))
     end
 
