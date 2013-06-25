@@ -2,6 +2,7 @@ require 'erb'
 require 'yaml'
 require 'pp'
 require 'pathname'
+require 'haml'
 
 dir = Pathname.new(__FILE__).dirname
 destination = Pathname.new("../PaintField")
@@ -56,7 +57,11 @@ langs.each_key do |lang|
 
     self_url = page["url"]
     lang_links = get_lang_links(self_url, langs, lang)
-    contents = File::open(dir + "source/#{lang}/#{self_url}").read
+
+    self_haml = self_url.gsub(/\.html$/, ".haml")
+
+    haml_engine = Haml::Engine.new(File::open(dir + "source/#{lang}/#{self_haml}").read)
+    contents = haml_engine.render
 
     pp index_links
     pp lang_links
